@@ -1,164 +1,59 @@
-# tslib
+<div align="center">
+  <a href="https://nextjs.org">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_dark_background.png">
+      <img alt="Next.js logo" src="https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_light_background.png" height="128">
+    </picture>
+  </a>
+  <h1>Next.js</h1>
 
-This is a runtime library for [TypeScript](https://www.typescriptlang.org/) that contains all of the TypeScript helper functions.
+<a href="https://vercel.com"><img alt="Vercel logo" src="https://img.shields.io/badge/MADE%20BY%20Vercel-000000.svg?style=for-the-badge&logo=Vercel&labelColor=000"></a>
+<a href="https://www.npmjs.com/package/next"><img alt="NPM version" src="https://img.shields.io/npm/v/next.svg?style=for-the-badge&labelColor=000000"></a>
+<a href="https://github.com/vercel/next.js/blob/canary/license.md"><img alt="License" src="https://img.shields.io/npm/l/next.svg?style=for-the-badge&labelColor=000000"></a>
+<a href="https://github.com/vercel/next.js/discussions"><img alt="Join the community on GitHub" src="https://img.shields.io/badge/Join%20the%20community-blueviolet.svg?style=for-the-badge&logo=Next.js&labelColor=000000&logoWidth=20"></a>
 
-This library is primarily used by the `--importHelpers` flag in TypeScript.
-When using `--importHelpers`, a module that uses helper functions like `__extends` and `__assign` in the following emitted file:
+</div>
 
-```ts
-var __assign = (this && this.__assign) || Object.assign || function(t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-        s = arguments[i];
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-            t[p] = s[p];
-    }
-    return t;
-};
-exports.x = {};
-exports.y = __assign({}, exports.x);
+## Getting Started
 
-```
+Used by some of the world's largest companies, Next.js enables you to create full-stack web applications by extending the latest React features, and integrating powerful Rust-based JavaScript tooling for the fastest builds.
 
-will instead be emitted as something like the following:
+- Visit our [Learn Next.js](https://nextjs.org/learn) course to get started with Next.js.
+- Visit the [Next.js Showcase](https://nextjs.org/showcase) to see more sites built with Next.js.
 
-```ts
-var tslib_1 = require("tslib");
-exports.x = {};
-exports.y = tslib_1.__assign({}, exports.x);
-```
+## Documentation
 
-Because this can avoid duplicate declarations of things like `__extends`, `__assign`, etc., this means delivering users smaller files on average, as well as less runtime overhead.
-For optimized bundles with TypeScript, you should absolutely consider using `tslib` and `--importHelpers`.
+Visit [https://nextjs.org/docs](https://nextjs.org/docs) to view the full documentation.
 
-# Installing
+## Community
 
-For the latest stable version, run:
+The Next.js community can be found on [GitHub Discussions](https://github.com/vercel/next.js/discussions) where you can ask questions, voice ideas, and share your projects with other people.
 
-## npm
+To chat with other community members you can join the Next.js [Discord](https://nextjs.org/discord) server.
 
-```sh
-# TypeScript 3.9.2 or later
-npm install tslib
+Do note that our [Code of Conduct](https://github.com/vercel/next.js/blob/canary/CODE_OF_CONDUCT.md) applies to all Next.js community channels. Users are **highly encouraged** to read and adhere to them to avoid repercussions.
 
-# TypeScript 3.8.4 or earlier
-npm install tslib@^1
+## Contributing
 
-# TypeScript 2.3.2 or earlier
-npm install tslib@1.6.1
-```
+Contributions to Next.js are welcome and highly appreciated. However, before you jump right into it, we would like you to review our [Contribution Guidelines](/contributing.md) to make sure you have a smooth experience contributing to Next.js.
 
-## yarn
+### Good First Issues:
 
-```sh
-# TypeScript 3.9.2 or later
-yarn add tslib
+We have a list of **[good first issues](https://github.com/vercel/next.js/labels/good%20first%20issue)** that contain bugs that have a relatively limited scope. This is a great place for newcomers and beginners alike to get started, gain experience, and get familiar with our contribution process.
 
-# TypeScript 3.8.4 or earlier
-yarn add tslib@^1
+## Authors
 
-# TypeScript 2.3.2 or earlier
-yarn add tslib@1.6.1
-```
+A list of the original co-authors of Next.js that helped bring this amazing framework to life!
 
-## bower
+- Tim Neutkens ([@timneutkens](https://x.com/timneutkens))
+- Naoyuki Kanezawa ([@nkzawa](https://x.com/nkzawa))
+- Guillermo Rauch ([@rauchg](https://x.com/rauchg))
+- Arunoda Susiripala ([@arunoda](https://x.com/arunoda))
+- Tony Kovanen ([@tonykovanen](https://x.com/tonykovanen))
+- Dan Zajdband ([@impronunciable](https://x.com/impronunciable))
 
-```sh
-# TypeScript 3.9.2 or later
-bower install tslib
+---
 
-# TypeScript 3.8.4 or earlier
-bower install tslib@^1
+## Security
 
-# TypeScript 2.3.2 or earlier
-bower install tslib@1.6.1
-```
-
-## JSPM
-
-```sh
-# TypeScript 3.9.2 or later
-jspm install tslib
-
-# TypeScript 3.8.4 or earlier
-jspm install tslib@^1
-
-# TypeScript 2.3.2 or earlier
-jspm install tslib@1.6.1
-```
-
-# Usage
-
-Set the `importHelpers` compiler option on the command line:
-
-```
-tsc --importHelpers file.ts
-```
-
-or in your tsconfig.json:
-
-```json
-{
-    "compilerOptions": {
-        "importHelpers": true
-    }
-}
-```
-
-#### For bower and JSPM users
-
-You will need to add a `paths` mapping for `tslib`, e.g. For Bower users:
-
-```json
-{
-    "compilerOptions": {
-        "module": "amd",
-        "importHelpers": true,
-        "baseUrl": "./",
-        "paths": {
-            "tslib" : ["bower_components/tslib/tslib.d.ts"]
-        }
-    }
-}
-```
-
-For JSPM users:
-
-```json
-{
-    "compilerOptions": {
-        "module": "system",
-        "importHelpers": true,
-        "baseUrl": "./",
-        "paths": {
-            "tslib" : ["jspm_packages/npm/tslib@2.x.y/tslib.d.ts"]
-        }
-    }
-}
-```
-
-## Deployment
-
-- Choose your new version number
-- Set it in `package.json` and `bower.json`
-- Create a tag: `git tag [version]`
-- Push the tag: `git push --tags`
-- Create a [release in GitHub](https://github.com/microsoft/tslib/releases)
-- Run the [publish to npm](https://github.com/microsoft/tslib/actions?query=workflow%3A%22Publish+to+NPM%22) workflow
-
-Done.
-
-# Contribute
-
-There are many ways to [contribute](https://github.com/Microsoft/TypeScript/blob/master/CONTRIBUTING.md) to TypeScript.
-
-* [Submit bugs](https://github.com/Microsoft/TypeScript/issues) and help us verify fixes as they are checked in.
-* Review the [source code changes](https://github.com/Microsoft/TypeScript/pulls).
-* Engage with other TypeScript users and developers on [StackOverflow](http://stackoverflow.com/questions/tagged/typescript).
-* Join the [#typescript](http://twitter.com/#!/search/realtime/%23typescript) discussion on Twitter.
-* [Contribute bug fixes](https://github.com/Microsoft/TypeScript/blob/master/CONTRIBUTING.md).
-
-# Documentation
-
-* [Quick tutorial](http://www.typescriptlang.org/Tutorial)
-* [Programming handbook](http://www.typescriptlang.org/Handbook)
-* [Homepage](http://www.typescriptlang.org/)
+If you believe you have found a security vulnerability in Next.js, we encourage you to **_responsibly disclose this and NOT open a public issue_**. We will investigate all legitimate reports. Email `security@vercel.com` to disclose any security vulnerabilities. Alternatively, you can visit this [link](https://vercel.com/security) to know more about Vercel's security and report any security vulnerabilities.
